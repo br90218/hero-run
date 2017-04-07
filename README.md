@@ -4,6 +4,9 @@ __:I want to play a wizard VR game!__
 
 __:Say no more.__
 
+![Unity Ver][1]
+
+[1]: https://img.shields.io/badge/Unity%20Version-5.6.0f3-brightgreen.svg
 
 ## 一些使用上的建議
 
