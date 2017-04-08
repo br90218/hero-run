@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerConrol : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
 
     [SerializeField] private int _maxHealth = 5;
@@ -43,5 +41,5 @@ public class PlayerConrol : MonoBehaviour
     {
         Health -= damage;
     }
-    
+
 }
