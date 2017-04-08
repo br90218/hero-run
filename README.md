@@ -1,3 +1,7 @@
+This branch is the __Lightning Effect__ branch. Branching from here is __not advised.__
+
+
+
 # Wizards
 
 __:I want to play a wizard VR game!__
