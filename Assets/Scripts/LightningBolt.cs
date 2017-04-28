@@ -8,8 +8,7 @@ public class LightningBolt : MonoBehaviour {
     [SerializeField] private GameObject _startPos;
     [SerializeField] private GameObject _endPos;
     [SerializeField] private int _segment;
-    [SerializeField] private float _updateInterval;
-    [SerializeField] private float _randomness;
+    [SerializeField] private float _boltSpeed;
 
     public GameObject StartPos
     {
@@ -29,16 +28,10 @@ public class LightningBolt : MonoBehaviour {
         set { _segment = value; }
     }
 
-    public float UpdateInterval
+    public float BoltSpeed
     {
-        get { return _updateInterval; }
-        set { _updateInterval = value; }
-    }
-
-    public float Randomness
-    {
-        get { return _randomness; }
-        set { _randomness = value; }
+        get { return _boltSpeed; }
+        set { _boltSpeed = value; }
     }
 
     private LineRenderer _bolt;
@@ -91,13 +84,15 @@ public class LightningBolt : MonoBehaviour {
                 var point = CalculateBezierPoint(t, _startPos.transform.position, curvePoint,
                     _endPos.transform.position);
 
-                if (i != 1 && i != 50)
-                {
-                    point += Random.insideUnitSphere * _randomness;
-                }
+
+
                 _bolt.SetPosition(i - 1, point);
             }
-            yield return new WaitForSeconds(_updateInterval);
+
+            var offset = Time.time * _boltSpeed;
+            _bolt.material.mainTextureOffset = new Vector2( - offset, 0);
+
+            yield return new WaitForFixedUpdate();
         }
         _bolt.enabled = false;
     }
