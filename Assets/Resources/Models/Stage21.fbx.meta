@@ -1,29 +1,42 @@
 fileFormatVersion: 2
-guid: 0ff1c3b2f3d096b478256347af223070
-timeCreated: 1496802081
+guid: a137caba4081ffc439dd117cfb4614ad
+timeCreated: 1497245846
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Plane
-    100002: Plane.002
-    100004: Plane.002_MeshPart0
-    100006: Plane.002_MeshPart1
-    100008: //RootNode
-    400000: Plane
-    400002: Plane.002
-    400004: Plane.002_MeshPart0
-    400006: Plane.002_MeshPart1
-    400008: //RootNode
-    2300000: Plane
-    2300002: Plane.002_MeshPart0
-    2300004: Plane.002_MeshPart1
-    3300000: Plane
-    3300002: Plane.002_MeshPart0
-    3300004: Plane.002_MeshPart1
-    4300000: Plane
-    4300002: Plane.002_MeshPart0
-    4300004: Plane.002_MeshPart1
+    100000: BezierCurve.000
+    100002: BezierCurve.001
+    100004: BezierCurve.002
+    100006: Cube.022
+    100008: NurbsPath
+    100010: NurbsPath.001
+    100012: //RootNode
+    400000: BezierCurve.000
+    400002: BezierCurve.001
+    400004: BezierCurve.002
+    400006: Cube.022
+    400008: NurbsPath
+    400010: NurbsPath.001
+    400012: //RootNode
+    2300000: BezierCurve.000
+    2300002: BezierCurve.001
+    2300004: BezierCurve.002
+    2300006: Cube.022
+    2300008: NurbsPath
+    2300010: NurbsPath.001
+    3300000: BezierCurve.000
+    3300002: BezierCurve.001
+    3300004: BezierCurve.002
+    3300006: Cube.022
+    3300008: NurbsPath
+    3300010: NurbsPath.001
+    4300000: BezierCurve.001
+    4300002: BezierCurve.000
+    4300004: BezierCurve.002
+    4300006: Cube.022
+    4300008: NurbsPath.001
+    4300010: NurbsPath
   materials:
     importMaterials: 1
     materialName: 0
