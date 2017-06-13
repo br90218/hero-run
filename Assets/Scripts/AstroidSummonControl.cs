@@ -11,6 +11,7 @@ public class AstroidSummonControl : MonoBehaviour {
     private bool _pointerInitialized = false;
     private bool _aiming = false;
     private Transform _magicSign;
+    private bool _cooling;
     void Start()
     {
         _magicAvailable = true;
@@ -79,7 +80,10 @@ public class AstroidSummonControl : MonoBehaviour {
         }
 
         if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))               //To prevent stucking in a state
+        {
+            _cooling = true;
             StartCoroutine(resetMagicAvailability());
+        }
     }
 
     IEnumerator shootMagic()
@@ -106,11 +110,17 @@ public class AstroidSummonControl : MonoBehaviour {
 
     IEnumerator resetMagicAvailability()
     {
-        yield return new WaitForSeconds(coolTime + 0.5f);
-        if(!_magicAvailable)
-            _magicAvailable = true;
-        if(!_aiming)
-            _aiming = false;
+        if (!_cooling)
+        {
+            _cooling = true;
+            yield return new WaitForSeconds(coolTime + 0.5f);
+            if (!_magicAvailable)
+                _magicAvailable = true;
+            if (!_aiming)
+                _aiming = false;
+            _cooling = false;
+        }
+        yield return null;
     }
 
     private void deactivateAllChilds()
