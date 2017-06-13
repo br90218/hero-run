@@ -24,6 +24,8 @@ public class RFX4_TransformMotion : MonoBehaviour
 	public float _explosionRadius = 5f;
 	public float _upwardMod = 1f;
 
+	public Vector3 StartVector;
+
 	private Vector3 startPositionLocal;
 	Transform t;
 	private Vector3 oldPos;
@@ -91,10 +93,10 @@ public class RFX4_TransformMotion : MonoBehaviour
 		var frameMoveOffset = Vector3.zero;
 		var frameMoveOffsetWorld = Vector3.zero;
 		if (!isCollided && !isOutDistance) {
-			currentSpeed = Mathf.Clamp (currentSpeed - Speed * Dampeen * Time.deltaTime, MinSpeed, Speed);
+			currentSpeed = StartVector.magnitude;
 			var currentForwardVector = Vector3.forward * currentSpeed * Time.deltaTime;
-			frameMoveOffset = t.localRotation * currentForwardVector;
-			frameMoveOffsetWorld = startQuaternion * currentForwardVector;
+			frameMoveOffset = Quaternion.FromToRotation (Vector3.forward, StartVector) * currentForwardVector;
+			frameMoveOffsetWorld = Quaternion.FromToRotation (Vector3.forward, StartVector) * currentForwardVector;
 		}
 
 		var currentDistance = (t.localPosition + frameMoveOffset - startPositionLocal).magnitude;
