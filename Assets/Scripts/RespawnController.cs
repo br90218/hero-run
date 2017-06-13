@@ -10,7 +10,6 @@ public class RespawnController : MonoBehaviour
 	[SerializeField] private Vector3 _positionOffset;
 
 	private int _checkpointFlag;
-	private char _cheat;
 
 	private void Start ()
 	{
@@ -19,37 +18,23 @@ public class RespawnController : MonoBehaviour
 
 	// Update is called once per frame
 	void Update ()
-	{
-		/*if (Input.GetKeyDown (KeyCode.R)) {
-			Player.position = transform.position;
-			Player.position += new Vector3 (0, 10, 0);
-		} else if (Input.GetKeyDown (KeyCode.F)) {
-			transform.position = Player.transform.position;
-		} else if (Input.GetKeyDown (KeyCode.Alpha1)) {
-			Player.transform.position = TRS1.transform.position;
-			Player.transform.position += new Vector3 (0, offset, 0);
-		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
-			Player.transform.position = TRS2.transform.position;
-			Player.transform.position += new Vector3 (0, offset, 0);
-		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
-			Player.transform.position = TRS3.transform.position;
-			Player.transform.position += new Vector3 (0, offset, 0);
-		} else if (Input.GetKeyDown (KeyCode.Alpha4)) {
-			Player.transform.position = TRS4.transform.position;
-			Player.transform.position += new Vector3 (0, offset, 0);
-		} else if (Input.GetKeyDown (KeyCode.B)) {
-			Player.transform.position = Begin.transform.position;
-			Player.transform.position += new Vector3 (0, 5, 0);
-		}*/
+	{	
+		if (Input.GetKey (KeyCode.Alpha0)) {
+			_checkpointFlag = 0;
+		}
+		if (Input.GetKey (KeyCode.Alpha1)) {
+			_checkpointFlag = 1;
+		}
+		if (Input.GetKey (KeyCode.Alpha2)) {
+			_checkpointFlag = 2;
+		}
+		if (Input.GetKey (KeyCode.Alpha3)) {
+			_checkpointFlag = 3;
+		}
 	}
 
 	public void Respawn ()
 	{
-		if (_cheat == null) {
-		
-			_player.gameObject.GetComponent<PCPlayerControl> ().Respawn ();
-			return;
-		}
 
 		switch (_checkpointFlag) {
 		case 0:
