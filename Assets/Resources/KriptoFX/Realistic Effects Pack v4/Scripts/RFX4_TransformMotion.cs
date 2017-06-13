@@ -126,6 +126,18 @@ public class RFX4_TransformMotion : MonoBehaviour
 
 	void OnCollisionBehaviour (RaycastHit hit)
 	{
+
+
+		var explosionPoint = hit.point;
+		var colliders = Physics.OverlapSphere (explosionPoint, _explosionRadius);
+		foreach (Collider hitCollider in colliders) {
+			//	print (hitCollider.name);
+			var rb = hitCollider.GetComponent<Rigidbody> ();
+			if (rb != null) {
+				print (rb.name);
+				rb.AddExplosionForce (_explosionPower, explosionPoint, _explosionRadius, _upwardMod);
+			}
+		}
 		var handler = CollisionEnter;
 		if (handler != null)
 			handler (this, new RFX4_CollisionInfo { Hit = hit });
@@ -142,14 +154,7 @@ public class RFX4_TransformMotion : MonoBehaviour
 			Destroy (instance, DestroyTimeDelay);
 		}
 
-		var explosionPoint = hit.point;
-		var colliders = Physics.OverlapSphere (explosionPoint, _explosionRadius);
-		foreach (Collider hitCollider in colliders) {
-			var rb = hitCollider.GetComponent<Rigidbody> ();
-			if (rb != null) {
-				rb.AddExplosionForce (_explosionPower, explosionPoint, _explosionRadius, _upwardMod);
-			}
-		}
+
 
 	}
 
