@@ -2,54 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RespawnController : MonoBehaviour {
-    public GameObject Player;
-    public GameObject TRS1;
-    public GameObject TRS2;
-    public GameObject TRS3;
-    public GameObject TRS4;
-    public GameObject Begin;
-    int offset = 25;
-    // Use this for initialization
-    void Start () {
-		
+public class RespawnController : MonoBehaviour
+{
+
+	[SerializeField] private Transform _player;
+	[SerializeField] private Transform[] _respawnPositions;
+	[SerializeField] private Vector3 _positionOffset;
+
+	private int _checkpointFlag;
+
+	private void Start ()
+	{
+		_checkpointFlag = 0;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Player.transform.position = transform.position ;
-            Player.transform.position += new Vector3(0, 10, 0);
-        }
-        else if(Input.GetKeyDown(KeyCode.F))
-        {
-            transform.position = Player.transform.position;
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Player.transform.position = TRS1.transform.position;
-            Player.transform.position += new Vector3(0, offset, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Player.transform.position = TRS2.transform.position;
-            Player.transform.position += new Vector3(0, offset, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Player.transform.position = TRS3.transform.position;
-            Player.transform.position += new Vector3(0, offset, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Player.transform.position = TRS4.transform.position;
-            Player.transform.position += new Vector3(0, offset, 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            Player.transform.position = Begin.transform.position;
-            Player.transform.position += new Vector3(0, 5, 0);
-        }
-    }
+	void Update ()
+	{	
+		if (Input.GetKey (KeyCode.Alpha0)) {
+			_checkpointFlag = 0;
+		}
+		if (Input.GetKey (KeyCode.Alpha1)) {
+			_checkpointFlag = 1;
+		}
+		if (Input.GetKey (KeyCode.Alpha2)) {
+			_checkpointFlag = 2;
+		}
+		if (Input.GetKey (KeyCode.Alpha3)) {
+			_checkpointFlag = 3;
+		}
+	}
+
+	public void Respawn ()
+	{
+
+		switch (_checkpointFlag) {
+		case 0:
+			_player.position = _respawnPositions [0].position + _positionOffset;
+			break;
+		case 1:
+			_player.position = _respawnPositions [1].position + _positionOffset;
+			break;
+		case 2:
+			_player.position = _respawnPositions [2].position + _positionOffset;
+			break;
+		case 3:
+			_player.position = _respawnPositions [3].position + _positionOffset;
+			break;
+		default:
+			Debug.LogError ("Something went wrong with checkpoint flag: " + _checkpointFlag);
+			return;
+		}
+		_player.gameObject.GetComponent<PCPlayerControl> ().Respawn ();
+	}
+
+	public void SetCheckpointFlag (int other)
+	{
+		_checkpointFlag = other;
+	}
 }
