@@ -11,6 +11,7 @@ public class FireBallControl : MonoBehaviour
 	private SteamVR_TrackedObject _trackedObj;
 	private bool _magicAvailable;
 	private Vector3 posA, posB;
+    private bool _fireBallAway;
 
 	void Start ()
 	{
@@ -35,9 +36,10 @@ public class FireBallControl : MonoBehaviour
 			this.transform.localRotation = Quaternion.identity;
 			_magicAvailable = false;
 		}
-		if (device.GetTouchUp (SteamVR_Controller.ButtonMask.Grip)) {
+		if (!_fireBallAway && !_magicAvailable && device.GetTouchUp (SteamVR_Controller.ButtonMask.Grip)) {
 			deactivateAllChilds ();
 			this.transform.parent = null;
+            _fireBallAway = true;
 			StartCoroutine (shootMagic ());
 		}
 	}
@@ -64,7 +66,8 @@ public class FireBallControl : MonoBehaviour
 		yield return new WaitForSeconds (3.5f);
 		ActivatedGameObject.SetActive (false);
 		_magicAvailable = true;
-	}
+        _fireBallAway = false;
+    }
 
 	private IEnumerator TrackVelocity ()
 	{
