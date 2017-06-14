@@ -37,6 +37,8 @@ public class TeleportTrigger : MonoBehaviour
 			_isSearchingTeleportDest = true;
 			if (_leftController.transform.position.y > transform.position.y || _rightController.transform.position.y > transform.position.y) {
 				_triggerTeleport = true;
+			} else {
+				_triggerTeleport = false;
 			}
 		} else {
 			_isSearchingTeleportDest = false;

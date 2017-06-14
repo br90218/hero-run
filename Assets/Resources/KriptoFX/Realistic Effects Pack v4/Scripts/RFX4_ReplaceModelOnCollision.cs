@@ -10,7 +10,6 @@ public class RFX4_ReplaceModelOnCollision : MonoBehaviour
 	[SerializeField] private float _upwardMod;
 
 	private bool isCollided = false;
-	Transform t;
 
 	private void OnCollisionEnter (Collision collision)
 	{
@@ -24,13 +23,13 @@ public class RFX4_ReplaceModelOnCollision : MonoBehaviour
 			rb.isKinematic = true;
 			rb.detectCollisions = false;
 
-			var colliders = Physics.OverlapSphere (t.position, _explosionRadius);
+			var colliders = Physics.OverlapSphere (transform.position, _explosionRadius);
 			foreach (Collider hitCollider in colliders) {
 				//	print (hitCollider.name);
 				var explodedrb = hitCollider.GetComponent<Rigidbody> ();
 				if (explodedrb != null) {
 					print (explodedrb.name);
-					explodedrb.AddExplosionForce (_explosionPower, t.position, _explosionRadius, _upwardMod);
+					explodedrb.AddExplosionForce (_explosionPower, transform.position, _explosionRadius, _upwardMod);
 				}
 			}
 		}

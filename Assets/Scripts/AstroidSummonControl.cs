@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AstroidSummonControl : MonoBehaviour
 {
+	public LayerMask Layers;
 	public GameObject Controller;
 	public float coolTime = 3.5f;
 
@@ -45,17 +46,18 @@ public class AstroidSummonControl : MonoBehaviour
 			return;
 		}
 
-		if (_magicAvailable == true && device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
+		if (_magicAvailable == true && device.GetTouchDown (SteamVR_Controller.ButtonMask.Grip)) {
 			_magicSign.gameObject.SetActive (true);
 			Controller.transform.FindChild ("New Game Object").gameObject.SetActive (true);
 			_magicAvailable = false;
 			_aiming = true;
 		}
 
-		if (_aiming == true && device.GetTouch (SteamVR_Controller.ButtonMask.Trigger)) {
+		if (_aiming == true && device.GetTouch (SteamVR_Controller.ButtonMask.Grip)) {
 			Ray ray = new Ray (Controller.transform.position, Controller.transform.forward);
 			RaycastHit hit;
-			if (Physics.Raycast (ray, out hit)) {
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity, Layers)) {
+				print (hit.collider.name);
 				if (_magicSign.gameObject.activeSelf == false)
 					_magicSign.gameObject.SetActive (true);
 				_magicSign.position = hit.point;
@@ -65,19 +67,19 @@ public class AstroidSummonControl : MonoBehaviour
 			}
 		}
 
-		if (_aiming == true && device.GetTouchUp (SteamVR_Controller.ButtonMask.Trigger)) {
+		if (_aiming == true && device.GetTouchUp (SteamVR_Controller.ButtonMask.Grip)) {
 			_aiming = false;
 			Controller.transform.FindChild ("New Game Object").gameObject.SetActive (false);
 			Ray ray = new Ray (Controller.transform.position, Controller.transform.forward);
 			RaycastHit hit;
-			if (Physics.Raycast (ray, out hit)) {
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity, Layers)) {
 				StartCoroutine (shootMagic ());
 			} else {
 				_magicAvailable = true;
 			}
 		}
 
-		if (device.GetTouchUp (SteamVR_Controller.ButtonMask.Trigger)) {               //To prevent stucking in a state
+		if (device.GetTouchUp (SteamVR_Controller.ButtonMask.Grip)) {               //To prevent stucking in a state
 			_cooling = true;
 			StartCoroutine (resetMagicAvailability ());
 		}
@@ -87,7 +89,7 @@ public class AstroidSummonControl : MonoBehaviour
 	{
 		Ray ray = new Ray (Controller.transform.position, Controller.transform.forward);
 		RaycastHit hit;        
-		if (Physics.Raycast (ray, out hit)) {
+		if (Physics.Raycast (ray, out hit, Mathf.Infinity, Layers)) {
 			this.transform.position = hit.point + new Vector3 (0f, 15f, 0f) + Random.insideUnitSphere * 7;
 
 			this.transform.LookAt (hit.point);

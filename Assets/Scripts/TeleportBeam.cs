@@ -126,4 +126,9 @@ public class TeleportBeam : MonoBehaviour
 			_laserChargeFlag = false;
 		}
 	}
+
+	private void OnDestroy ()
+	{
+		Destroy (_scorchMarkClone);
+	}
 }
