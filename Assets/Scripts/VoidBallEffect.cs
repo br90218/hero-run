@@ -5,7 +5,7 @@ using UnityEngine;
 public class VoidBallEffect : MonoBehaviour
 {
 
-	[SerializeField] private Transform _targetTransform;
+	[SerializeField] private Transform _targetCameraTransform;
 	[SerializeField] private Vector3 _offset;
 	[SerializeField] private GameObject _voidBall;
 	[SerializeField] private AudioClip _voidBallSound;
@@ -15,6 +15,8 @@ public class VoidBallEffect : MonoBehaviour
 	[SerializeField] private float _blackoutTime;
 	[SerializeField] private FireBallControl _fireBallScript;
 	[SerializeField] private AstroidSummonControl _asteroidScript;
+	[SerializeField] private float _shrinkTime;
+	[SerializeField] private AnimationCurve _shrinkCurve;
  
 
 	private float _time;
@@ -24,7 +26,7 @@ public class VoidBallEffect : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Invoke ("Activate", 10f);
+		Invoke ("Activate", 5f);
 	}
 
 	private void Update ()
@@ -35,7 +37,7 @@ public class VoidBallEffect : MonoBehaviour
 	public void Activate ()
 	{
 		_time = 0f;
-		_voidBallInstance = Instantiate (_voidBall, _targetTransform.position + _offset, Quaternion.identity, null);
+		_voidBallInstance = Instantiate (_voidBall, _targetCameraTransform.position + _offset, Quaternion.identity, null);
 		GetComponent<AudioSource> ().clip = _voidBallSound;
 		GetComponent<AudioSource> ().Play ();
 		_voidBallInstance.transform.localScale = _currScale;
@@ -56,21 +58,49 @@ public class VoidBallEffect : MonoBehaviour
 
 	private void Blackout ()
 	{
-		Destroy (_voidBallInstance);
-		_targetTransform.gameObject.GetComponent<InverseColorEffect> ().ControlValue = 0f;
-
+		//Destroy (_voidBallInstance);
+		StartCoroutine ("BallJitter");
+		_targetCameraTransform.gameObject.GetComponent<Camera> ().cullingMask = ~(1 << LayerMask.NameToLayer ("VoidBall"));
+		_targetCameraTransform.gameObject.GetComponent<InverseColorEffect> ().ControlValue = 0f;
 		_fireBallScript.IsFrozen = true;
 		_asteroidScript.IsFrozen = true;
 		//TODO: Invoke UI script
 		Invoke ("EndEffect", _blackoutTime);
 	}
 
+	private IEnumerator BallJitter ()
+	{
+		while (true) {
+			var noise = Random.insideUnitSphere * _additiveNoiseFactor;
+			_voidBallInstance.transform.localScale = _currScale + noise;
+			yield return new WaitForFixedUpdate ();
+		}
+
+	}
+
 	private void EndEffect ()
 	{
-		_targetTransform.gameObject.GetComponent<InverseColorEffect> ().ControlValue = 1f;
+		StopCoroutine ("BallJitter");
+		StartCoroutine ("BallVanish");
+		_targetCameraTransform.gameObject.GetComponent<Camera> ().cullingMask |= (1 << LayerMask.NameToLayer ("VoidBall"));
+		_targetCameraTransform.gameObject.GetComponent<InverseColorEffect> ().ControlValue = 1f;
 		_fireBallScript.IsFrozen = false;
 		_asteroidScript.IsFrozen = false;
 		print ("Void effect out");
+	}
+
+	private IEnumerator BallVanish ()
+	{
+		var vanishTime = 0f;
+		while (vanishTime < _shrinkTime) {
+			var evaluated = _shrinkCurve.Evaluate (vanishTime);
+			_currScale *= evaluated;
+			var noise = Random.insideUnitSphere * _additiveNoiseFactor;
+			_voidBallInstance.transform.localScale = _currScale + noise;
+			vanishTime += Time.deltaTime;
+			yield return new WaitForFixedUpdate ();
+		}
+		Destroy (_voidBallInstance);
 	}
 
 }
