@@ -9,5 +9,6 @@ public class VoidBallTrigger : MonoBehaviour
 	private void OnTriggerEnter ()
 	{
 		_effectController.Activate ();
+		Destroy (gameObject);
 	}
 }
