@@ -96,6 +96,7 @@ namespace Invector.CharacterController
         // movement bools
         [HideInInspector]
         public bool
+            isBlowed,
             isGrounded,
             isStrafing,
             isSprinting,
@@ -329,20 +330,24 @@ namespace Invector.CharacterController
                 if (isStrafing)
                 {
 
-                    _rigidbody.velocity = new Vector3(velX.x, velY.y, _rigidbody.velocity.z);
+                    //_rigidbody.velocity = new Vector3(velX.x, velY.y, _rigidbody.velocity.z);
+                    _rigidbody.AddForce(new Vector3(velX.x, velY.y, 0));
                     var vel = transform.forward * (jumpForward * speed) + transform.right * (jumpForward * direction);
-                    _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
+                    _rigidbody.AddForce(vel);
+                    //_rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
                 }
                 else
                 {
                     var vel = transform.forward * (jumpForward * speed);
-                    _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
+                    _rigidbody.AddForce(vel);
+                   // _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
                 }
             }
             else
             {
                 var vel = transform.forward * (jumpForward);
-                _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
+                _rigidbody.AddForce(vel);
+               // _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
             }
         }
 
@@ -381,13 +386,17 @@ namespace Invector.CharacterController
             // clear the checkground to free the character to attack on air                
             var onStep = StepOffset();
 
-            if (groundDistance <= 0.05f)
+            if (groundDistance <= 0.05f && isBlowed == false)
             {
                 isGrounded = true;
                 Sliding();
             }
             else
             {
+                if (groundDistance > 0.05f)
+                {
+                    isBlowed = false;
+                }
                 if (groundDistance >= groundCheckDistance)
                 {
                     isGrounded = false;

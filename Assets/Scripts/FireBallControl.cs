@@ -8,7 +8,7 @@ public class FireBallControl : MonoBehaviour
 	public GameObject ActivatedGameObject;
 	public float FrameInterval = 0.01f;
 	public bool IsFrozen;
-
+	public float speed = 1;
 	private SteamVR_TrackedObject _trackedObj;
 	private bool _magicAvailable;
 	private Vector3 posA, posB;
@@ -65,7 +65,7 @@ public class FireBallControl : MonoBehaviour
 	IEnumerator shootMagic ()
 	{
 		print ((posB - posA).magnitude);
-		ActivatedGameObject.GetComponent<RFX4_TransformMotion> ().StartVector = (posB - posA) / FrameInterval;
+		ActivatedGameObject.GetComponent<RFX4_TransformMotion> ().StartVector = (posB - posA) / FrameInterval * speed;
 		ActivatedGameObject.SetActive (true);
 		yield return new WaitForSeconds (3.5f);
 		ActivatedGameObject.SetActive (false);
