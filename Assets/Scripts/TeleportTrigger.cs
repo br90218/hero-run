@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeleportTrigger : MonoBehaviour
 {
-
+	[SerializeField] private Transform _currentLocation;
 	[SerializeField] private GameObject _leftController;
 	[SerializeField] private GameObject _rightController;
 	[SerializeField] private TeleportEffect _effectMaster;
@@ -54,7 +54,11 @@ public class TeleportTrigger : MonoBehaviour
 					marker = hit.collider.gameObject;
 					marker.GetComponent<TeleportMarkerTrigger> ().Activate (true);
 					if (_triggerTeleport) {
-						//TODO: triggerTeleport
+						_effectMaster.FromTransform = _currentLocation;
+						_effectMaster.ToTransform = marker.GetComponent<TeleportMarkerTrigger> ().GetTeleportDestination ();
+						_effectMaster.Activate ();
+					} else {
+						_effectMaster.Deactivate ();
 					}
 				} else {
 					if (marker != null) {
