@@ -20,8 +20,8 @@ public class RFX4_TransformMotion : MonoBehaviour
 	[HideInInspector] public float HUE = -1;
 	[HideInInspector] public List<GameObject> CollidedInstances;
 
-	public float _explosionPower = 3000f;
-	public float _explosionRadius = 10f;
+	public float _explosionPower = 200f;
+	public float _explosionRadius = 20f;
 	public float _upwardMod = 1f;
 
 	public Vector3 StartVector;
@@ -48,6 +48,8 @@ public class RFX4_TransformMotion : MonoBehaviour
 		oldPos = t.TransformPoint (startPositionLocal);
 		Initialize ();
 		isInitialized = true;
+		_explosionPower = 1500f;
+		_explosionRadius = 75f;
 	}
 
 	void OnEnable ()
