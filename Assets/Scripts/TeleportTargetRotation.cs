@@ -11,6 +11,6 @@ public class TeleportTargetRotation : MonoBehaviour
 	void Update ()
 	{
 		rotX += Time.deltaTime * _degreesPerSec;
-		transform.localRotation = Quaternion.Euler (new Vector3 (rotX, 90f, 90f));
+		transform.localRotation = Quaternion.Euler (new Vector3 (0, rotX, 0));
 	}
 }
