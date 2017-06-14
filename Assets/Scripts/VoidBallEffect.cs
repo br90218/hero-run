@@ -13,7 +13,9 @@ public class VoidBallEffect : MonoBehaviour
 	[SerializeField] private float _growTime;
 	[SerializeField] private float _additiveNoiseFactor;
 	[SerializeField] private float _blackoutTime;
-
+	[SerializeField] private FireBallControl _fireBallScript;
+	[SerializeField] private AstroidSummonControl _asteroidScript;
+ 
 
 	private float _time;
 	private GameObject _voidBallInstance;
@@ -22,7 +24,7 @@ public class VoidBallEffect : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Invoke ("Activate", 10f);
+		Invoke ("Activate", 30f);
 	}
 
 	private void Update ()
@@ -56,7 +58,9 @@ public class VoidBallEffect : MonoBehaviour
 	{
 		Destroy (_voidBallInstance);
 		_targetTransform.gameObject.GetComponent<InverseColorEffect> ().ControlValue = 0f;
-		//TODO: Disable all controls for VR
+
+		_fireBallScript.IsFrozen = true;
+		_asteroidScript.IsFrozen = true;
 		//TODO: Invoke UI script
 		Invoke ("EndEffect", _blackoutTime);
 	}
@@ -64,6 +68,8 @@ public class VoidBallEffect : MonoBehaviour
 	private void EndEffect ()
 	{
 		_targetTransform.gameObject.GetComponent<InverseColorEffect> ().ControlValue = 1f;
+		_fireBallScript.IsFrozen = false;
+		_asteroidScript.IsFrozen = false;
 		print ("Void effect out");
 	}
 
