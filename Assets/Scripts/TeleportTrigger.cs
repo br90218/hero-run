@@ -7,11 +7,13 @@ public class TeleportTrigger : MonoBehaviour
 
 	[SerializeField] private GameObject _leftController;
 	[SerializeField] private GameObject _rightController;
+	[SerializeField] private TeleportEffect _effectMaster;
 
 
 	private SteamVR_TrackedObject _leftTrackedObj;
 	private SteamVR_TrackedObject _rightTrackedObj;
 	private bool _isSearchingTeleportDest;
+	private bool _triggerTeleport;
 
 	private void Awake ()
 	{
@@ -33,6 +35,9 @@ public class TeleportTrigger : MonoBehaviour
 
 		if (deviceL.GetTouch (SteamVR_Controller.ButtonMask.Trigger) && deviceR.GetTouch (SteamVR_Controller.ButtonMask.Trigger)) {
 			_isSearchingTeleportDest = true;
+			if (_leftController.transform.position.y > transform.position.y || _rightController.transform.position.y > transform.position.y) {
+				_triggerTeleport = true;
+			}
 		} else {
 			_isSearchingTeleportDest = false;
 		}
@@ -45,10 +50,12 @@ public class TeleportTrigger : MonoBehaviour
 			if (_isSearchingTeleportDest) {
 				RaycastHit hit;
 				var ray = Physics.Raycast (transform.position, transform.forward, out hit);
-				Debug.DrawRay (transform.position, transform.forward * 5000, Color.blue);
 				if (hit.collider != null && hit.collider.CompareTag ("TeleportLocation")) {
 					marker = hit.collider.gameObject;
 					marker.GetComponent<TeleportMarkerTrigger> ().Activate (true);
+					if (_triggerTeleport) {
+						//TODO: triggerTeleport
+					}
 				} else {
 					if (marker != null) {
 						marker.GetComponent<TeleportMarkerTrigger> ().Activate (false);
