@@ -6,13 +6,12 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Explosion
-  m_Shader: {fileID: 4800000, guid: 50609c7cf7955e44a80a9d58099d5657, type: 3}
-  m_ShaderKeywords: BlendMul Clip_OFF FrameBlend_ON SoftParticles_ON VertLight_OFF
+  m_Name: Rock 1
+  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 3001
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -20,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 25975c43db132a14fa54a8821e885e67, type: 3}
+          m_Texture: {fileID: 2800000, guid: c098fe8a666c4c04e89a3806760d1d11, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 91a3e0da2e044804e83ae61f10d37518, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -79,39 +78,34 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _SrcBlend
-        second: 5
-      data:
-        first:
-          name: _DstBlend
-        second: 10
-      data:
-        first:
-          name: _Cutoff
-        second: 0.5
-      data:
-        first:
-          name: _InvFade
         second: 1
       data:
         first:
-          name: SrcMode
-        second: 2
+          name: _DstBlend
+        second: 0
       data:
         first:
-          name: DstMode
+          name: _Cutoff
         second: 0
       data:
         first:
           name: _Glossiness
-        second: 1
+        second: 0
       data:
         first:
           name: _Metallic
-        second: 1
+        second: 0
       data:
         first:
           name: _Parallax
@@ -119,7 +113,7 @@ Material:
       data:
         first:
           name: _ZWrite
-        second: 0
+        second: 1
       data:
         first:
           name: _BumpScale
@@ -139,11 +133,11 @@ Material:
       data:
         first:
           name: _Mode
-        second: 2
+        second: 0
       data:
         first:
-          name: _Cutout
-        second: 0.2
+          name: _CutoutThickness
+        second: 0.05
     m_Colors:
       data:
         first:
@@ -152,12 +146,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
       data:
         first:
-          name: _TintColor
-        second: {r: 0, g: 0, b: 0, a: 1}
-      data:
-        first:
-          name: _Tiling
-        second: {r: 800, g: 800, b: 8, a: 8}
+          name: _BorderColor
+        second: {r: 2, g: 0.6206895, b: 0, a: 1}

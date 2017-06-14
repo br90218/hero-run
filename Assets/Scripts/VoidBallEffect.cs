@@ -24,7 +24,7 @@ public class VoidBallEffect : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Invoke ("Activate", 30f);
+		Invoke ("Activate", 10f);
 	}
 
 	private void Update ()
