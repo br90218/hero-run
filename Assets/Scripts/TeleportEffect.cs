@@ -47,5 +47,6 @@ public class TeleportEffect : MonoBehaviour
 		FromTransform.position = ToTransform.position;
 		FromTransform.rotation = ToTransform.rotation;
 		FromTransform.localScale = ToTransform.localScale;
+		FromTransform.gameObject.GetComponent<TeleportFlameScript> ().Ignite ();
 	}
 }

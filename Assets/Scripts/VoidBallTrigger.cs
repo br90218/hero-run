@@ -5,10 +5,22 @@ using UnityEngine;
 public class VoidBallTrigger : MonoBehaviour
 {
 	[SerializeField] private VoidBallEffect _effectController;
+	[SerializeField] private float _regenerateTime;
 
 	private void OnTriggerEnter ()
 	{
-		_effectController.Activate ();
-		Destroy (gameObject);
+		if (!_effectController.IsActivated ()) {
+			_effectController.Activate ();
+			StartCoroutine ("Vanish");
+		}
+	}
+
+	private IEnumerator Vanish ()
+	{
+		GetComponent<MeshRenderer> ().enabled = false;
+		GetComponent<SphereCollider> ().enabled = false;
+		yield return new WaitForSeconds (_regenerateTime);
+		GetComponent<MeshRenderer> ().enabled = true;
+		GetComponent<SphereCollider> ().enabled = true;
 	}
 }

@@ -10,5 +10,8 @@ public class RespawnDetector : MonoBehaviour
 		if (other.CompareTag ("PCPlayer")) {
 			other.GetComponent<PCPlayerControl> ().Death ();
 		}
+		if (other.gameObject.layer == LayerMask.NameToLayer ("Magic")) {
+			Destroy (other.gameObject);
+		}
 	}
 }

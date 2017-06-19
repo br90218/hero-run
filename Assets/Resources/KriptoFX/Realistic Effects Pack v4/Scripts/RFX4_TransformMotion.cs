@@ -121,8 +121,9 @@ public class RFX4_TransformMotion : MonoBehaviour
 			oldPos = t.position;
 			return;
 		}
-
+		print (oldPos + " " + frameMoveOffsetWorld);
 		t.position = oldPos + frameMoveOffsetWorld;
+
 		oldPos = t.position;
 	}
 
@@ -135,10 +136,11 @@ public class RFX4_TransformMotion : MonoBehaviour
 		var explosionPoint = hit.point;
 		var colliders = Physics.OverlapSphere (explosionPoint, _explosionRadius);
 		foreach (Collider hitCollider in colliders) {
-			//	print (hitCollider.name);
+			
+			print (hitCollider.name);
 			var rb = hitCollider.GetComponent<Rigidbody> ();
 			if (rb != null) {
-				print (rb.name);
+				print ("FireBall Hit :" + rb.name);
 				rb.AddExplosionForce (_explosionPower, explosionPoint, _explosionRadius, _upwardMod);
 			}
 		}

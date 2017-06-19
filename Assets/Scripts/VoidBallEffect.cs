@@ -15,6 +15,7 @@ public class VoidBallEffect : MonoBehaviour
 	[SerializeField] private float _blackoutTime;
 	[SerializeField] private FireBallControl _fireBallScript;
 	[SerializeField] private AstroidSummonControl _asteroidScript;
+	[SerializeField] private TeleportTrigger _teleportControl;
 	[SerializeField] private float _shrinkTime;
 	[SerializeField] private AnimationCurve _shrinkCurve;
  
@@ -22,6 +23,7 @@ public class VoidBallEffect : MonoBehaviour
 	private float _time;
 	private GameObject _voidBallInstance;
 	private Vector3 _currScale;
+	private bool _isActivated;
 
 	// Use this for initialization
 	void Start ()
@@ -35,6 +37,7 @@ public class VoidBallEffect : MonoBehaviour
 
 	public void Activate ()
 	{
+		_isActivated = true;
 		_time = 0f;
 		_voidBallInstance = Instantiate (_voidBall, _targetCameraTransform.position + _offset, Quaternion.identity, null);
 		GetComponent<AudioSource> ().clip = _voidBallSound;
@@ -63,6 +66,7 @@ public class VoidBallEffect : MonoBehaviour
 		_targetCameraTransform.gameObject.GetComponent<InverseColorEffect> ().ControlValue = 0f;
 		_fireBallScript.IsFrozen = true;
 		_asteroidScript.IsFrozen = true;
+		_teleportControl.enabled = false;
 		//TODO: Invoke UI script
 		Invoke ("EndEffect", _blackoutTime);
 	}
@@ -85,7 +89,9 @@ public class VoidBallEffect : MonoBehaviour
 		_targetCameraTransform.gameObject.GetComponent<InverseColorEffect> ().ControlValue = 1f;
 		_fireBallScript.IsFrozen = false;
 		_asteroidScript.IsFrozen = false;
+		_teleportControl.enabled = true;
 		print ("Void effect out");
+
 	}
 
 	private IEnumerator BallVanish ()
@@ -99,7 +105,12 @@ public class VoidBallEffect : MonoBehaviour
 			vanishTime += Time.deltaTime;
 			yield return new WaitForFixedUpdate ();
 		}
+		_isActivated = false;
 		Destroy (_voidBallInstance);
 	}
 
+	public bool IsActivated ()
+	{
+		return _isActivated;
+	}
 }

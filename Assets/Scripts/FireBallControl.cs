@@ -64,7 +64,6 @@ public class FireBallControl : MonoBehaviour
 
 	IEnumerator shootMagic ()
 	{
-		print ((posB - posA).magnitude);
 		ActivatedGameObject.GetComponent<RFX4_TransformMotion> ().StartVector = (posB - posA) / FrameInterval * speed;
 		ActivatedGameObject.SetActive (true);
 		yield return new WaitForSeconds (3.5f);

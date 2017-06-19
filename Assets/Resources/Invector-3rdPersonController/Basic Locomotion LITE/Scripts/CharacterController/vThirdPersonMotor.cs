@@ -102,6 +102,7 @@ namespace Invector.CharacterController
 			isGrounded,
 			isStrafing,
 			isSprinting,
+			isShooting,
 			isSliding;
 
 		// action bools
@@ -473,8 +474,8 @@ namespace Invector.CharacterController
 			}
 
 			if (GroundAngle () > slopeLimit + 1f && GroundAngle () <= 85 &&
-			             groundAngleTwo > slopeLimit + 1f && groundAngleTwo <= 85 &&
-			             groundDistance <= 0.05f && !onStep) {
+			    groundAngleTwo > slopeLimit + 1f && groundAngleTwo <= 85 &&
+			    groundDistance <= 0.05f && !onStep) {
 				isSliding = true;
 				isGrounded = false;
 				var slideVelocity = (GroundAngle () - slopeLimit) * 2f;
@@ -505,6 +506,16 @@ namespace Invector.CharacterController
 			}
 			return false;
 		}
+
+		#endregion
+
+		#region Shooting Controls
+
+		public void Shoot ()
+		{
+			
+		}
+
 
 		#endregion
 
