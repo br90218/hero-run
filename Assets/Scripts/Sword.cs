@@ -60,6 +60,11 @@ public class Sword : MonoBehaviour
 			transform.rotation = Quaternion.Lerp (transform.rotation, FollowTransform.rotation, _followLerpFactor);
 		} else if (_currState == SwordState.Shoot) {
 			StartCoroutine ("KillCounter");
+
+
+			//TODO: implement sword shooting methods
+
+
 			transform.position += transform.forward * _shootingSpeed * Time.deltaTime;
 		} else if (_currState == SwordState.Death) {
 			//Death FX
