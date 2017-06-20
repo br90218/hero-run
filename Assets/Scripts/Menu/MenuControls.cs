@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuControls : MonoBehaviour {
 
@@ -135,7 +135,7 @@ public class MenuControls : MonoBehaviour {
 
     public void OnStartGame()
     {
-        Debug.Log("Hi");
+        SceneManager.LoadScene("Prepare");
     }
 
     public void RecordVRPlayerName(string arg0)
