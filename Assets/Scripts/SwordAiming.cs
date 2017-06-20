@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwordAiming : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class SwordAiming : MonoBehaviour
 	[SerializeField] private float _fovLerpFactor = 0.2f;
 	[SerializeField] private GameObject _swordPrefab;
 	[SerializeField] private float _respawnTime;
+	[SerializeField] private RawImage _crossHair;
 
 	private GameObject[] _swordsInstances;
 	private Vector3[] _originalShealthLocations;
@@ -71,12 +73,14 @@ public class SwordAiming : MonoBehaviour
 				_shealthTransforms [i].localRotation = _originalShealthRotations [i];
 			}
 			_camera.fieldOfView = Mathf.Lerp (_camera.fieldOfView, _regularFOV, _fovLerpFactor);
+			_crossHair.enabled = false;
 		} else if (_currState == State.Aiming) {
 			for (var i = 0; i < _shealthTransforms.Length; i++) {
 				_shealthTransforms [i].localPosition = _originalShealthLocations [i] + new Vector3 (0f, 0.9f, 0f);
 				_shealthTransforms [i].rotation = _camera.transform.rotation;
 			}
 			_camera.fieldOfView = Mathf.Lerp (_camera.fieldOfView, _aimingFOV, _fovLerpFactor);
+			_crossHair.enabled = true;
 
 		} else if (_currState == State.Shooting) {
 			for (var i = 0; i < _shealthTransforms.Length; i++) {
