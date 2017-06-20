@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndingSequence : MonoBehaviour
 {
+    public TimerUI TimerUI;
 
 	[SerializeField]
 	private Camera _warpedCamera;
@@ -17,17 +18,11 @@ public class EndingSequence : MonoBehaviour
 	[SerializeField]
 	private VREnding _vrEnding;
 
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
 	// Update is called once per frame
 	void Update ()
 	{
-		
-	}
+
+    }
 
 	private void OnTriggerEnter (Collider other)
 	{
@@ -35,10 +30,11 @@ public class EndingSequence : MonoBehaviour
 			_vrEnding.isEnd = true;
 			StartEnding ();
 		}
-	}
+    }
 
 	private void StartEnding ()
 	{
+        SaveCurrentScore();
 		StartCoroutine ("WarpCamera");
 	}
 
@@ -56,4 +52,8 @@ public class EndingSequence : MonoBehaviour
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
 
+    private void SaveCurrentScore()
+    {
+        PlayerPrefs.SetFloat("Current Player Score", TimerUI.timer);
+    }
 }

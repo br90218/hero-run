@@ -33,7 +33,7 @@ public class TeleportTrigger : MonoBehaviour
 		var deviceL = SteamVR_Controller.Input ((int)_leftTrackedObj.index);
 		var deviceR = SteamVR_Controller.Input ((int)_rightTrackedObj.index);
 
-		if (deviceL.GetTouch (SteamVR_Controller.ButtonMask.Trigger) && deviceR.GetTouch (SteamVR_Controller.ButtonMask.Trigger)) {
+		if (deviceL.GetTouch (SteamVR_Controller.ButtonMask.Grip) && deviceR.GetTouch (SteamVR_Controller.ButtonMask.Grip)) {
 			_isSearchingTeleportDest = true;
 			if (_leftController.transform.position.y > transform.position.y || _rightController.transform.position.y > transform.position.y) {
 				_triggerTeleport = true;

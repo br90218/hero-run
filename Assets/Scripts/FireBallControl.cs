@@ -32,7 +32,7 @@ public class FireBallControl : MonoBehaviour
 		if (IsFrozen) {
 			return;
 		}
-		if (_magicAvailable == true && device.GetTouchDown (SteamVR_Controller.ButtonMask.Grip)) {
+		if (_magicAvailable == true && device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
 			StartCoroutine ("TrackVelocity");
 			activeAllChilds ();
 			this.transform.parent = Controller.transform;
@@ -40,7 +40,7 @@ public class FireBallControl : MonoBehaviour
 			this.transform.localRotation = Quaternion.identity;
 			_magicAvailable = false;
 		}
-		if (!_fireBallAway && !_magicAvailable && device.GetTouchUp (SteamVR_Controller.ButtonMask.Grip)) {
+		if (!_fireBallAway && !_magicAvailable && device.GetTouchUp (SteamVR_Controller.ButtonMask.Trigger)) {
 			deactivateAllChilds ();
 			this.transform.parent = null;
 			_fireBallAway = true;
@@ -75,7 +75,7 @@ public class FireBallControl : MonoBehaviour
 	private IEnumerator TrackVelocity ()
 	{
 		var device = SteamVR_Controller.Input ((int)_trackedObj.index);
-		while (device.GetTouch (SteamVR_Controller.ButtonMask.Grip)) {
+		while (device.GetTouch (SteamVR_Controller.ButtonMask.Trigger)) {
 			posA = posB;
 			posB = _trackedObj.transform.position;
 			yield return new WaitForSeconds (FrameInterval);

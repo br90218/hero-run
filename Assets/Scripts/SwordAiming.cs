@@ -23,6 +23,10 @@ public class SwordAiming : MonoBehaviour
 	[SerializeField] private GameObject _swordPrefab;
 	[SerializeField] private float _respawnTime;
 	[SerializeField] private RawImage _crossHair;
+	[SerializeField] private GameObject _VRPlayer;
+	public float m_speed = 1;
+	public float m_turn = 1;
+	public float m_angle = 90;
 
 	private GameObject[] _swordsInstances;
 	private Vector3[] _originalShealthLocations;
@@ -33,6 +37,7 @@ public class SwordAiming : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		m_speed = 10;
 		_swordsInstances = new GameObject[_shealthTransforms.Length];
 		_originalShealthLocations = new Vector3[_shealthTransforms.Length];
 		_originalShealthRotations = new Quaternion[_shealthTransforms.Length];
@@ -89,6 +94,9 @@ public class SwordAiming : MonoBehaviour
 			}
 			if (_chosenSlot != -1) {
 				if (_nextState != State.Shooting) {
+					//Set Sword param
+					_swordsInstances [_chosenSlot].GetComponent<Sword> ().SetPowerParam (m_speed, m_turn, m_angle);
+					_swordsInstances [_chosenSlot].GetComponent<Sword> ().m_target = _VRPlayer;
 					_swordsInstances [_chosenSlot].GetComponent<Sword> ().Shoot ();
 					_swordsInstances [_chosenSlot] = null;
 					StartCoroutine (RespawnSword (_chosenSlot));

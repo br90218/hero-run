@@ -46,14 +46,14 @@ public class AstroidSummonControl : MonoBehaviour
 			return;
 		}
 
-		if (_magicAvailable == true && device.GetTouchDown (SteamVR_Controller.ButtonMask.Grip)) {
+		if (_magicAvailable == true && device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
 			_magicSign.gameObject.SetActive (true);
 			Controller.transform.FindChild ("New Game Object").gameObject.SetActive (true);
 			_magicAvailable = false;
 			_aiming = true;
 		}
 
-		if (_aiming == true && device.GetTouch (SteamVR_Controller.ButtonMask.Grip)) {
+		if (_aiming == true && device.GetTouch (SteamVR_Controller.ButtonMask.Trigger)) {
 			Ray ray = new Ray (Controller.transform.position, Controller.transform.forward);
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, Layers)) {
@@ -67,7 +67,7 @@ public class AstroidSummonControl : MonoBehaviour
 			}
 		}
 
-		if (_aiming == true && device.GetTouchUp (SteamVR_Controller.ButtonMask.Grip)) {
+		if (_aiming == true && device.GetTouchUp (SteamVR_Controller.ButtonMask.Trigger)) {
 			_aiming = false;
 			Controller.transform.FindChild ("New Game Object").gameObject.SetActive (false);
 			Ray ray = new Ray (Controller.transform.position, Controller.transform.forward);
@@ -79,7 +79,7 @@ public class AstroidSummonControl : MonoBehaviour
 			}
 		}
 
-		if (device.GetTouchUp (SteamVR_Controller.ButtonMask.Grip)) {               //To prevent stucking in a state
+		if (device.GetTouchUp (SteamVR_Controller.ButtonMask.Trigger)) {               //To prevent stucking in a state
 			_cooling = true;
 			StartCoroutine (resetMagicAvailability ());
 		}
