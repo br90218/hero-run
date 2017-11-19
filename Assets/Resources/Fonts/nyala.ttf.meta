@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 1fb08e227ebde0e46b4288b2e50283c1
+timeCreated: 1497426044
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Nyala
+  fontNames:
+  - Nyala
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
