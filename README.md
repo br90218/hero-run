@@ -30,3 +30,22 @@ Before running the game, please make sure that the Vive is up and running.
 
 
 **Note:** There will be a screen where players will be asked to input their names. Before this stage is done no content will be displayed in the VR headset. Please put on your headset after you've completed this step.
+
+## [Demo Video (V1.0)](https://youtu.be/zOiKjcNCmPg)
+
+## Credits
+Developed by BMI8888.
+
+BMI8888 is:
+- "Brian" Yang-Che Teng - Development/Design Lead, Programmer, Effects
+- "Marvin" Jyun-Liang Yang - Modeler
+- "Ian" Yi-Chien Chang - Programmer
+
+MUSIC:
+- BrunuhVille - The Voice of the Music (2015)
+- Two Steps From Hell - Strength of a Thousand Men (2011) 
+
+## Disclaimer
+THIS PRODUCT (GAME) MAY CONTAIN COPYRIGHTED MATERIAL, THE USE OF WHICH MAY NOT HAVE BEEN SPECIFICALLY AUTHORIZED BY THE COPYRIGHT OWNER. THE MATERIAL CONTAINED IN THIS PRODUCT IS DISTRIBUTED WITHOUT ANY FORM OF PROFIT AND PURELY FOR RESEARCH AND EDUCATIONAL PURPOSES.
+
+"Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for "fair use" for purposes such s cirticism, comment, news reporting, teaching, scholarship, and research. Fair use is a permitted by copyright statue that might otherwise be infringing. Non-profit, educational or personal use tips the balance in favor of fair use."
