@@ -9,7 +9,11 @@ Welcome to the repository of "Hero, RUN!". Please check out the releases page fo
 
 ## About this game
 > "For centuries the human race has been enslaved by gods from the higher realm. Under absolute power no rebellion has been ever attempted.
+
+
 > Legend has it that in the far North, nigher above the highest mountains, hidden in the thick clouds lies an entrance to the heavens. Only through the 'Path' guarded by the Watchman cna one understand the ultimate truth of this world.
+
+
 > And now, a hero has arrived at the footsteps of heaven. He does not know what he will see behind those gates, but he is destined to become a legend."
 
 "Hero, RUN!" is an **Asymmetric VR multiplayer game** where two players will take turns playing as the hero and the god. As the **hero**, your goal is to reach the heavenly gates as quickly as possible; as the **god**, however, you must deter your adversary from breaching into your realm at all cost.
