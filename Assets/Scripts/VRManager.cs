@@ -6,7 +6,7 @@ public class VRManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		UnityEngine.VR.VRSettings.showDeviceView = false;
+		UnityEngine.XR.XRSettings.showDeviceView = false;
 	}
 	
 	// Update is called once per frame

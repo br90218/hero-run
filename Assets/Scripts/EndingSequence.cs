@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndingSequence : MonoBehaviour
 {
-    public TimerUI TimerUI;
+	public TimerUI TimerUI;
 
 	[SerializeField]
 	private Camera _warpedCamera;
@@ -22,19 +22,21 @@ public class EndingSequence : MonoBehaviour
 	void Update ()
 	{
 
-    }
+	}
 
 	private void OnTriggerEnter (Collider other)
 	{
 		if (other.CompareTag ("PCPlayer")) {
 			_vrEnding.isEnd = true;
+			TimerUI.timerOn = false;
+			other.gameObject.GetComponent<SwordAiming> ().enabled = false;
 			StartEnding ();
 		}
-    }
+	}
 
 	private void StartEnding ()
 	{
-        SaveCurrentScore();
+		SaveCurrentScore ();
 		StartCoroutine ("WarpCamera");
 	}
 
@@ -49,11 +51,21 @@ public class EndingSequence : MonoBehaviour
 			_timer += Time.deltaTime;
 			yield return new WaitForFixedUpdate ();
 		}
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		if (PlayerPrefs.GetInt ("PCPlayerScoreSet") == 1 && PlayerPrefs.GetInt ("VRPlayerScoreSet") == 1) {
+			SceneManager.LoadScene ("Results");
+		} else {
+			SceneManager.LoadScene ("Prepare");
+		}
 	}
 
-    private void SaveCurrentScore()
-    {
-        PlayerPrefs.SetFloat("Current Player Score", TimerUI.timer);
-    }
+	private void SaveCurrentScore ()
+	{
+		if (PlayerPrefs.GetInt ("PCPlayerScoreSet") == 0) {
+			PlayerPrefs.SetFloat ("PCPlayerScore", TimerUI.timer);
+			PlayerPrefs.SetInt ("PCPlayerScoreSet", 1);
+		} else {
+			PlayerPrefs.SetFloat ("VRPlayerScore", TimerUI.timer);
+			PlayerPrefs.SetInt ("VRPlayerScoreSet", 1);
+		}
+	}
 }

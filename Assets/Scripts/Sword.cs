@@ -23,6 +23,7 @@ public class Sword : MonoBehaviour
 	[SerializeField] private float _perlinNoiseTraverseSpeed = 1f;
 	[SerializeField] private float _shakeIntensity = 0.02f;
 	[SerializeField] private bool _blockingEnable = true;
+	public GameObject UI;
 	private Material _swordMaterial;
 	private SwordState _currState;
 	private SwordState _nextState;
@@ -36,7 +37,6 @@ public class Sword : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		_aliveTime = 100;
 		_maximumPower = 2;
 		m_velocity = new Vector3 (0, 0, 0);
 		auto = 1;
@@ -68,10 +68,11 @@ public class Sword : MonoBehaviour
 			transform.rotation = Quaternion.Lerp (transform.rotation, FollowTransform.rotation, _followLerpFactor);
 		} else if (_currState == SwordState.Shoot) {
 			StartCoroutine ("KillCounter");
+			GetComponent<BoxCollider> ().enabled = true;
 			if (m_velocity.magnitude == 0) {
 				m_speed = (_power + 1) * 4;
 				m_angle = 20 - _power * 3;
-				m_turn = (_blockingEnable) ? 0.01f / 1.5f : (0.01f) * (1 + _power / 2);
+				m_turn = (_blockingEnable) ? 0.01f / 3f : (0.01f) * (1 + _power / 2);
 				m_velocity = transform.forward * m_speed;
 				m_distance = Vector3.Distance (transform.position, m_target.transform.position); 
 			}
@@ -130,6 +131,7 @@ public class Sword : MonoBehaviour
 	{
 		if (other.gameObject == m_target) {
 			print ("HIT!");
+			UI.GetComponent<TimerUI> ().timer = (UI.GetComponent<TimerUI> ().timer > 1) ? UI.GetComponent<TimerUI> ().timer - 1 : UI.GetComponent<TimerUI> ().timer;
 			Destroy (gameObject);
 		}
 	}

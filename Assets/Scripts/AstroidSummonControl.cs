@@ -21,7 +21,7 @@ public class AstroidSummonControl : MonoBehaviour
 	{
 		_magicAvailable = true;
 		deactivateAllChilds ();
-		_magicSign = this.transform.FindChild ("magicSign");
+		_magicSign = this.transform.Find ("magicSign");
 	}
 
 	private void Awake ()
@@ -35,8 +35,8 @@ public class AstroidSummonControl : MonoBehaviour
 
 	void Update ()
 	{
-		if (!_pointerInitialized && Controller.transform.FindChild ("New Game Object") != null) {
-			Controller.transform.FindChild ("New Game Object").gameObject.SetActive (false);
+		if (!_pointerInitialized && Controller.transform.Find ("New Game Object") != null) {
+			Controller.transform.Find ("New Game Object").gameObject.SetActive (false);
 			_pointerInitialized = true;
 		}
         
@@ -48,7 +48,7 @@ public class AstroidSummonControl : MonoBehaviour
 
 		if (_magicAvailable == true && device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
 			_magicSign.gameObject.SetActive (true);
-			Controller.transform.FindChild ("New Game Object").gameObject.SetActive (true);
+			Controller.transform.Find ("New Game Object").gameObject.SetActive (true);
 			_magicAvailable = false;
 			_aiming = true;
 		}
@@ -69,7 +69,7 @@ public class AstroidSummonControl : MonoBehaviour
 
 		if (_aiming == true && device.GetTouchUp (SteamVR_Controller.ButtonMask.Trigger)) {
 			_aiming = false;
-			Controller.transform.FindChild ("New Game Object").gameObject.SetActive (false);
+			Controller.transform.Find ("New Game Object").gameObject.SetActive (false);
 			Ray ray = new Ray (Controller.transform.position, Controller.transform.forward);
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit, Mathf.Infinity, Layers)) {

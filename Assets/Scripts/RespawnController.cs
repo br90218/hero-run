@@ -31,6 +31,9 @@ public class RespawnController : MonoBehaviour
 		if (Input.GetKey (KeyCode.Alpha3)) {
 			_checkpointFlag = 3;
 		}
+		if (Input.GetKey (KeyCode.Alpha6)) {
+			_checkpointFlag = 6;
+		}
 	}
 
 	public void Respawn ()
@@ -48,6 +51,9 @@ public class RespawnController : MonoBehaviour
 			break;
 		case 3:
 			_player.position = _respawnPositions [3].position + _positionOffset;
+			break;
+		case 6:
+			_player.position = _respawnPositions [4].position + _positionOffset;
 			break;
 		default:
 			Debug.LogError ("Something went wrong with checkpoint flag: " + _checkpointFlag);

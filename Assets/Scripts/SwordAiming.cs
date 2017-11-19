@@ -27,6 +27,7 @@ public class SwordAiming : MonoBehaviour
 	public float m_speed = 1;
 	public float m_turn = 1;
 	public float m_angle = 90;
+	public GameObject UI;
 
 	private GameObject[] _swordsInstances;
 	private Vector3[] _originalShealthLocations;
@@ -34,6 +35,7 @@ public class SwordAiming : MonoBehaviour
 	private int _chosenSlot = -1;
 	private State _currState;
 	private State _nextState;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -98,6 +100,7 @@ public class SwordAiming : MonoBehaviour
 					_swordsInstances [_chosenSlot].GetComponent<Sword> ().SetPowerParam (m_speed, m_turn, m_angle);
 					_swordsInstances [_chosenSlot].GetComponent<Sword> ().m_target = _VRPlayer;
 					_swordsInstances [_chosenSlot].GetComponent<Sword> ().Shoot ();
+					_swordsInstances [_chosenSlot].GetComponent<Sword> ().UI = UI;
 					_swordsInstances [_chosenSlot] = null;
 					StartCoroutine (RespawnSword (_chosenSlot));
 					_chosenSlot = -1;
