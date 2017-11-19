@@ -16,15 +16,17 @@ Welcome to the repository of "Hero, RUN!". Please check out the releases page fo
 
 "Hero, RUN!" is an **Asymmetric VR multiplayer game** where two players will take turns playing as the hero and the god. As the **hero**, your goal is to reach the heavenly gates as quickly as possible; as the **god**, however, you must deter your adversary from breaching into your realm at all cost.
 
-## Installing
+## Installing the game
 Please check out the releases page to find the latest build.
 
 Unfortunately, bounded by the nature of this game you will need an insanely powerful setup to run this game. To be specific:
 - HTC Vive with controllers
 - A graphics card that spits hot fire (Test passed with GTX 1080 Ti)
 
+You will also need a big room, where one player can play in the Vive while the other can be seated in front of the computer. This is not an online multiplayer game so you will only need one computer to execute the game.
+
+## Running the game
+Before running the game, please make sure that the Vive is up and running.
 
 
-
-
-- You might wonder why the name of this repository is different from the game's itself. Truth be told, we were working on something completely different, but we had to bail the idea for there is simply not enough time for us to fulfill it; but since we can start off with assets we've already created, there's no apparent reason for us to remove it entirely.
+**Note:** There will be a screen where players will be asked to input their names. Before this stage is done no content will be displayed in the VR headset. Please put on your headset after you've completed this step.
