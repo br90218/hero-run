@@ -23,7 +23,7 @@ Unfortunately, bounded by the nature of this game you will need an insanely powe
 - HTC Vive with controllers
 - A graphics card that spits hot fire (Test passed with GTX 1080 Ti)
 
-You will also need a big room, where one player can play in the Vive while the other can be seated in front of the computer. **It is also strongly advised that your hardware setup allows the cables for the Vive to come out of the computer from a direction opposite from where the PC player is seated. Hardware casualties may occur if not done correctly.** 
+You will also need a big room, where one player can play in the Vive while the other can be seated in front of the computer. **It is strongly advised that your hardware setup allows the cables for the Vive to come out of the computer from a direction opposite from where the PC player is seated. Hardware casualties may occur if not done correctly.** 
 
 This is not an online multiplayer game so you will only need one computer to execute the game.
 
