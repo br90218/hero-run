@@ -23,13 +23,13 @@ Unfortunately, bounded by the nature of this game you will need an insanely powe
 - HTC Vive with controllers
 - A graphics card that spits hot fire (Test passed with GTX 1080 Ti)
 
-You will also need a big room, where one player can play in the Vive while the other can be seated in front of the computer. This is not an online multiplayer game so you will only need one computer to execute the game.
+You will also need a big room, where one player can play in the Vive while the other can be seated in front of the computer. **It is also strongly advised that your hardware setup allows the cables for the Vive to come out of the computer from a direction opposite from where the PC player is seated. Hardware casualties may occur if not done correctly.** This is not an online multiplayer game so you will only need one computer to execute the game.
 
 ## Running the game
 Before running the game, please make sure that the Vive is up and running.
 
 
-**Note:** There will be a screen where players will be asked to input their names. Before this stage is done no content will be displayed in the VR headset. Please put on your headset after you've completed this step.
+**Note:** There will be a screen in game where players will be asked to input their names. Before this stage is done no content will be displayed in the VR headset. Please put on your headset after you've completed this step.
 
 ## [Demo Video (V1.0)](https://youtu.be/zOiKjcNCmPg)
 
