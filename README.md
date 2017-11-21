@@ -44,7 +44,7 @@ BMI8888 is:
 - "Ian" Yi-Chien Chang - Programmer
 
 MUSIC:
-- BrunuhVille - The Voice of the Music (2015)
+- BrunuhVille - The Voice of the Forest (2015)
 - Two Steps From Hell - Strength of a Thousand Men (2011) 
 
 ## Disclaimer
