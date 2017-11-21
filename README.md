@@ -5,7 +5,7 @@
 [1]: https://img.shields.io/badge/Unity%20Version-2017.2.0-brightgreen.svg?style=flat-square
 [2]: https://img.shields.io/badge/Release-v2.1.4-blue.svg?style=flat-square
 
-Welcome to the repository of "Hero, RUN!". Please check out the releases page for the latest build.
+Welcome to the repository of "Hero, RUN!". Please check out the [releases](https://github.com/br90218/hero-run/releases) page for the latest build.
 
 ## About this game
 > "For centuries the human race has been enslaved by gods from the higher realm. Under absolute power no rebellion has been ever attempted.
@@ -17,7 +17,7 @@ Welcome to the repository of "Hero, RUN!". Please check out the releases page fo
 "Hero, RUN!" is an **Asymmetric VR multiplayer game** where two players will take turns playing as the hero and the god. As the **hero**, your goal is to reach the heavenly gates as quickly as possible; as the **god**, however, you must deter your adversary from breaching into your realm at all cost.
 
 ## Installing the game
-Please check out the releases page to find the latest build.
+Please check out the [releases](https://github.com/br90218/hero-run/releases) page to find the latest build.
 
 Unfortunately, bounded by the nature of this game you will need an insanely powerful setup to run this game. To be specific:
 - HTC Vive with controllers
