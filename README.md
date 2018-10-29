@@ -39,9 +39,9 @@ Before running the game, please make sure that the Vive is up and running.
 Developed by BMI8888.
 
 BMI8888 is:
-- "Brian" Yang-Che Teng - Programmer, Main Designer, Sound Design, Producer
-- "Marvin" Jyun-Liang Yang - Modeler
-- "Ian" Yi-Chien Chang - Programmer
+- "Brian" Yang-Che Teng - Programmer, Gameplay Designer, Sound Design, Producer
+- "Marvin" Jyun-Liang Yang - Modeler, Art Designer
+- "Ian" Yi-Chien Chang - Programmer, VR Interaction Designer
 
 MUSIC:
 - BrunuhVille - The Voice of the Forest (2015)
