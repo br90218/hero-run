@@ -39,7 +39,7 @@ Before running the game, please make sure that the Vive is up and running.
 Developed by BMI8888.
 
 BMI8888 is:
-- "Brian" Yang-Che Teng - Development/Design Lead, Programmer, Effects
+- "Brian" Yang-Che Teng - Programmer, Main Designer, Sound Design, Producer
 - "Marvin" Jyun-Liang Yang - Modeler
 - "Ian" Yi-Chien Chang - Programmer
 
