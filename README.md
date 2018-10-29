@@ -14,7 +14,7 @@ Welcome to the repository of "Hero, RUN!". Please check out the [releases](https
 
 > And now, a hero has arrived at the footsteps of heaven. He does not know what he will see behind those gates, but he is destined to become a legend."
 
-"Hero, RUN!" is an **Asymmetric VR multiplayer game** where two players will take turns playing as the hero and the god. As the **hero**, your goal is to reach the heavenly gates as quickly as possible; as the **god**, however, you must deter your adversary from breaching into your realm at all cost.
+"Hero, RUN!" is an **Asymmetric VR multiplayer game** where two players will take turns playing as the hero and the god. As the **hero**, your goal is to reach the heavenly gates as quickly as possible; as the **deity**, however, you must deter your adversary from breaching into your realm at all cost.
 
 ## Installing the game
 Please check out the [releases](https://github.com/br90218/hero-run/releases) page to find the latest build.
